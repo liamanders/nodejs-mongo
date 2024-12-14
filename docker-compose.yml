@@ -1,0 +1,17 @@
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb-users
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-users
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb-users
+volumes:
+  mongo_data:
